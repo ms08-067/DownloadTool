@@ -1,0 +1,66 @@
+stages:
+  - build
+  - deploy
+
+#build:dus-develop:
+#  when: manual
+#  stage: build
+#  only:
+#    - develop
+#  environment:
+#    name: develop
+#    url: https://dus-develop.hanoi.br24.vn
+#  script:
+#    # build image and save in Gitlab
+#    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD gitlab.br24.vn:4999
+#    - docker build -t gitlab.br24.vn:4999/br24-vietnam/download-upload-server/dus-develop --build-arg CONTAINER_ENV=develop --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --build-arg LARAVEL_WEBSOCKETS_PORT_INTERNAL=$LARAVEL_WEBSOCKETS_PORT_INTERNAL .
+#    - docker push gitlab.br24.vn:4999/br24-vietnam/download-upload-server/dus-develop
+#    # prepare stack for deployment
+#    - sed -i "s/DEPLOY_TOKEN_USERNAME=.*/DEPLOY_TOKEN_USERNAME=$DEPLOY_TOKEN_USERNAME/" docker-compose.develop.yml
+#    - sed -i "s/DEPLOY_TOKEN=.*/DEPLOY_TOKEN=$DEPLOY_TOKEN/" docker-compose.develop.yml
+#    #- sed -i "s/CIFS_OPTIONS=.*/username=$CIFS_USERNAME,password=$CIFS_PASSWORD,domain=ad.hanoi.br24.vn,uid=33,gid=33/" docker-compose.develop.yml
+#
+#    # str_replace the ws ports to their locations
+#    #- sed -i "s/XX_LARAVEL_WEBSOCKETS_PORT_EXTERNAL_XX:XX_LARAVEL_WEBSOCKETS_PORT_INTERNAL_XX/$LARAVEL_WEBSOCKETS_PORT_EXTERNAL:$LARAVEL_WEBSOCKETS_PORT_INTERNAL/" docker-compose.develop.yml
+#    #- sed -i "s/LARAVEL_WEBSOCKETS_PORT_INTERNAL=.*/LARAVEL_WEBSOCKETS_PORT_INTERNAL=$LARAVEL_WEBSOCKETS_PORT_INTERNAL/" docker-compose.develop.yml
+#    #- sed -i "s/LARAVEL_WEBSOCKETS_PORT_EXTERNAL=.*/LARAVEL_WEBSOCKETS_PORT_EXTERNAL=$LARAVEL_WEBSOCKETS_PORT_EXTERNAL/" docker-compose.develop.yml
+#
+#    # str_replace the bitrix webhook to their locations
+#    - sed -i "s~BITRIX24_DUS_WEBHOOK=.*~BITRIX24_DUS_WEBHOOK=$BITRIX24_DUS_WEBHOOK~" docker-compose.develop.yml
+#    - sed -i "s~BITRIX24_DUS_NOTIFICATIONS_CHAT_ROOM_ID=.*~BITRIX24_DUS_NOTIFICATIONS_CHAT_ROOM_ID=$BITRIX24_DUS_NOTIFICATIONS_CHAT_ROOM_ID~" docker-compose.develop.yml
+#
+#    # deploy changes to Portainer
+#    - portainer-cli login $PORTAINER_USER $PORTAINER_PASSWORD
+#    - portainer-cli create_or_update_stack -n dus-develop -e 1 -sf docker-compose.develop.yml
+#
+#deploy:dus-develop:
+#  stage: deploy
+#  only:
+#    - develop
+#  environment:
+#    name: develop
+#    url: https://dus-develop.hanoi.br24.vn
+#
+#  script:
+#    - docker exec dus-develop ./deployUpdate.sh develop LARAVEL_WEBSOCKETS_PORT_INTERNAL $LARAVEL_WEBSOCKETS_PORT_EXTERNAL $BITRIX24_DUS_WEBHOOK $BITRIX24_DUS_NOTIFICATIONS_CHAT_ROOM_ID
+
+
+build:dus:
+  stage: build
+  when: manual
+  only:
+    - master
+  environment:
+    name: production
+    url: https://dus.han1.br24.vn
+  script:
+    # str_replace the bitrix webhook to their locations
+    - sed -i "s~BITRIX24_DUS_WEBHOOK=.*~BITRIX24_DUS_WEBHOOK=$BITRIX24_DUS_WEBHOOK~" .prod.env
+    - sed -i "s~BITRIX24_DUS_NOTIFICATIONS_CHAT_ROOM_ID=.*~BITRIX24_DUS_NOTIFICATIONS_CHAT_ROOM_ID=$BITRIX24_DUS_NOTIFICATIONS_CHAT_ROOM_ID~" .prod.env
+
+    # build image and save in Gitlab
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t gitlab.br24.vn:4999/br24-vietnam/download-upload-server/dus --build-arg CONTAINER_ENV=production --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY .
+    - docker push gitlab.br24.vn:4999/br24-vietnam/download-upload-server/dus
+    # deploy changes to Portainer
+    - curl -X POST https://portainer.han1.br24.vn/api/stacks/webhooks/f3a404e1-9a3a-401c-a2f6-4c14d262a9b7

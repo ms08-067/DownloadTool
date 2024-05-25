@@ -1,0 +1,87 @@
+{
+    "name": "br24vietnam/downloaduploadtool",
+    "type": "project",
+    "description": "BR24 Download Upload Tool.",
+    "keywords": [
+        "downloaduploadtool",
+        "laravel",
+        "sigmoswitch",
+        "br24vietnam"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.0.2",
+        "ext-json": "*",
+        "ext-ldap": "*",
+        "aws/aws-sdk-php": "3.281.13",
+        "beyondcode/laravel-websockets": "1.14.1",
+        "directorytree/ldaprecord-laravel": "3.0.6",
+        "doctrine/dbal": "3.6.7",
+        "fab1en/rocket-chat-rest-client": "1.0",
+        "guzzlehttp/guzzle": "7.8.0",
+        "laravel/framework": "10.24.0",
+        "laravel/sanctum": "3.3.1",
+        "laravel/tinker": "2.8.2",
+        "laravel/ui": "4.2.2",
+        "league/flysystem-aws-s3-v3": "3.16.0",
+        "league/fractal": "0.20.1",
+        "mesilov/bitrix24-php-sdk": "2.0-alpha.7",
+        "phpseclib/phpseclib": "3.0.23",
+        "predis/predis": "2.2.2",
+        "rap2hpoutre/laravel-log-viewer": "2.3.0",
+        "rcrowe/twigbridge": "0.14.1",
+        "sinergi/browser-detector": "6.1.4",
+        "spatie/laravel-directory-cleanup": "1.9.1",
+        "symfony/http-client": "6.3.2",
+        "twig/cache-extra": "3.7.0",
+        "twig/cssinliner-extra": "3.7.1",
+        "twig/html-extra": "3.7.1",
+        "twig/inky-extra": "3.7.1",
+        "twig/intl-extra": "3.7.1",
+        "twig/markdown-extra": "3.7.1",
+        "twig/string-extra": "3.7.1",
+        "twig/twig": "3.7.1",
+        "yajra/laravel-datatables-fractal": "10.0.0",
+        "yajra/laravel-datatables-oracle": "10.8.0"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "3.9.2",
+        "fakerphp/faker": "1.23.0",
+        "laravel/sail": "1.25.0",
+        "mockery/mockery": "1.6.6",
+        "nunomaduro/collision": "7.9.0",
+        "phpunit/phpunit": "10.3.5",
+        "spatie/laravel-ignition": "2.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "platform":{
+            "php":"8.1",
+            "ext-ldap": "8.1"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

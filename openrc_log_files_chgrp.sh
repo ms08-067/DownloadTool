@@ -1,0 +1,1 @@
+sudo chgrp -R www-data /var/www/src/alpine/storage/logs

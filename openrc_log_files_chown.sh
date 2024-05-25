@@ -1,0 +1,1 @@
+sudo chown -R root /var/www/src/alpine/storage/logs

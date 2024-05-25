@@ -1,0 +1,1 @@
+sudo chmod -R ug+rwx /var/www/src/alpine/storage/logs
