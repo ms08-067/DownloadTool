@@ -1,0 +1,64 @@
+{% extends "layouts/simple" %}
+{% block content %}
+    <div class="middle-box text-center loginscreen animated fadeInDown p-xxlg-top">
+        <div>
+            <div>
+                <img src="{{ asset('logo.png') }}" alt="Br24 logo">
+            </div>
+            <h3>Registration is closed</h3>
+            {#<h3>Register to Br24 Salary</h3>#}
+            {#<form class="m-t" role="form" method="POST" action="{{ route('register') }}">#}
+            {#{{ csrf_field() }}#}
+            {#<div class="form-group {{ errors.has('name') ? ' has-error' : '' }}">#}
+            {#<label for="name" class="pull-left">{{ trans('message.register_name') }}</label>#}
+            {#<input type="text" name="name" class="form-control" placeholder="Full name" value="{{ old('name') }}" required>#}
+            {#{% if errors.has('name') %}#}
+            {#<span class="invalid-feedback" role="alert">#}
+            {#<strong>{{ errors.first('name') }}</strong>#}
+            {#</span>#}
+            {#{% endif %}#}
+            {#</div>#}
+            {#<div class="form-group {{ errors.has('email') ? ' has-error' : '' }}">#}
+            {#<label for="email" class="pull-left">{{ trans('message.register_email') }}</label>#}
+            {#<input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required>#}
+            {#{% if errors.has('email') %}#}
+            {#<span class="invalid-feedback" role="alert">#}
+            {#<strong>{{ errors.first('email') }}</strong>#}
+            {#</span>#}
+            {#{% endif %}#}
+            {#</div>#}
+            {#<div class="form-group {{ errors.has('username') ? ' has-error' : '' }}">#}
+            {#<label for="username" class="pull-left">{{ trans('message.register_username') }}</label>#}
+            {#<input type="text" name="username" class="form-control" placeholder="Login id" value="{{ old('username') }}" required>#}
+            {#{% if errors.has('username') %}#}
+            {#<span class="invalid-feedback" role="alert">#}
+            {#<strong>{{ errors.first('username') }}</strong>#}
+            {#</span>#}
+            {#{% endif %}#}
+            {#</div>#}
+            {#<div class="form-group {{ errors.has('password') ? ' has-error' : '' }}">#}
+            {#<label for="password" class="pull-left">{{ trans('message.register_password') }}</label>#}
+            {#<input type="password" name="password" class="form-control" placeholder="Password" required>#}
+            {#{% if errors.has('password') %}#}
+            {#<span class="invalid-feedback" role="alert">#}
+            {#<strong>{{ errors.first('password') }}</strong>#}
+            {#</span>#}
+            {#{% endif %}#}
+            {#</div>#}
+            {#<div class="form-group {{ errors.has('password_confirmation') ? ' has-error' : '' }}">#}
+            {#<label for="password-confirm" class="pull-left">{{ trans('message.register_password_confirm') }}</label>#}
+            {#<input id="password-confirm" type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>#}
+            {#</div>#}
+            {#{# <div class="form-group"> #}
+            {#{# <div class="checkbox i-checks"><label><input type="checkbox"><i></i> Agree the terms and policy </label></div> #}
+            {#{# </div> #}
+            {#<button type="submit" class="btn btn-primary block full-width m-b">Register</button>#}
+            {#</form>#}
+            <div class="m-t">
+                <p class="text-muted text-center"><small>Already have an account?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="{{ route('login') }}">Login</a>
+            </div>
+            <p class="m-t"> <small>Copyright © 2019 Br24</small> </p>
+        </div>
+    </div>
+{% endblock %}

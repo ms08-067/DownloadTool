@@ -1,0 +1,92 @@
+{% extends "layouts/simple" %}
+
+{% block content %}
+    <div class="middle-box text-center loginscreen animated fadeInDown p-xxlg-top">
+        <div>
+            <img src="{{ asset('logo.png') }}" alt="Br24 logo">
+        </div>
+
+        <h3>Welcome to Br24 Salary Tool</h3>
+
+        <h2 class="font-bold">Change Password</h2>
+
+        <p>Use the form below to change your password. </p>
+        <p style="color: red">Changing your password you will automatically be logged out to sign back in with your new password.</p>
+
+        {% if session_has('message') %}
+            <div class="alert alert-success" role="alert">
+                {{ session_get('message') }}
+            </div>
+        {% endif %}
+
+        {% if session('status') %}
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        {% endif %}
+
+        <div class="row">
+            <div class="col-lg-12">
+                <form class="form-horizontal" role="form" method="POST" action="{{ route('password.change') }}">
+                    {{ csrf_field() }}
+
+                    <input type="hidden" name="token" value="{{ token }}">
+
+                    <div class="form-group{{ errors.has('current_password') ? ' has-error' : '' }}">
+                        <label for="email" class="col-md-4 control-label">Current Password</label>
+
+                        <div class="col-md-6">
+                            <input id="current_password" type="password" class="form-control" name="current_password" value="{{ current_password or old('current_password') }}" required autofocus>
+                            {% if errors.has('current_password') %}
+                                <span class="help-block">
+                                    {{ errors.first('current_password') }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="form-group{{ errors.has('password') ? ' has-error' : '' }}">
+                        <label for="password" class="col-md-4 control-label">New Password</label>
+
+                        <div class="col-md-6">
+                            <input id="password" type="password" class="form-control" name="password" required>
+
+                            {% if errors.has('password') %}
+                                <span class="help-block">
+                                    {{ errors.first('password') }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="form-group{{ errors.has('password_confirmation') ? ' has-error' : '' }}">
+                        <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                        <div class="col-md-6">
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            {% if errors.has('password_confirmation') %}
+                                <span class="help-block">
+                                    {{ errors.first('password_confirmation') }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary block full-width m-b">Change Password</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <a href="{{ route('home', [], false) }}">Back to Home</a>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+
+{% block js %}
+{% endblock %}
+
+{% block init %}
+{% endblock %}

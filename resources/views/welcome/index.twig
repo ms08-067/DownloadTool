@@ -1,0 +1,73 @@
+{% extends "layouts/app" %} 
+
+{% block style_css %}
+    <style>
+        pre {
+            outline: 0px solid #ccc;
+            padding: 5px;
+            margin: 5px;
+            font-size:10px;
+            max-height:300px;
+            overflow-y: scroll;
+            white-space: pre-wrap;       /* Since CSS 2.1 */
+            white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+        }
+        .string { color: green; }
+        .number { color: darkorange; }
+        .boolean { color: blue; }
+        .null { color: magenta; }
+        .key { color: red; }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Upload Download Tool</h5><span class="pull-right unselectable" style="cursor: pointer; font-weight: 900;" id="pause_refresh">[PAUSE refresh]</span>
+                    {# <span class="label label-primary period pull-right">{{ period.when }}</span> #}
+                </div>
+                <div class="ibox-content" style="display:block">
+                    <div class="links">
+                        {{ enviro }}
+                    </div>
+                </div>                    
+                <div class="ibox-content" style="display:block">                    
+                    <div class="links">
+                        task_downloads_files_not_finished_processing
+                        <br>
+                        <pre id="task_downloads_files_not_finished_processing">{{ dump(task_downloads_files_not_finished_processing) }}</pre>
+                        upload_files_not_finished_processing
+                        <br>
+                        <pre id="upload_files_not_finished_processing">{{ dump(upload_files_not_finished_processing) }}</pre>
+                        task_manual_downloads_files_not_finished_processing
+                        <br>
+                        <pre id="task_manual_downloads_files_not_finished_processing">{{ dump(task_manual_downloads_files_not_finished_processing) }}</pre>
+                        <br><br><br><br>
+                        Current timestamp = {{current_timestamp}}  ---  {{current_datetime}}
+                        <br><br><br><br>
+                        jobs_table
+                        <br>
+                        <pre id="worker_jobs_table">{{ dump(worker_jobs_table) }}</pre>
+                        failed_jobs_table
+                        <br>
+                        <pre id="worker_failedjobs_table">{{ dump(worker_failedjobs_table) }}</pre>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %} 
+
+{% block js %}
+    {#<script type="text/javascript" src="{{ asset('js/datepicker.min.js') }}?v={{ versioning }}"></script>#}
+    <script type="text/javascript" src="{{ asset('js/nprogress.js') }}?v={{ versioning }}"></script>
+{% endblock %} 
+
+{% block init %}
+    <script type="text/javascript">app_ops.mainmenu.index.init();</script>
+{% endblock %}

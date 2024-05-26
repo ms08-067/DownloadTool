@@ -1,0 +1,23 @@
+.treegrid-indent {
+    width:16px; height: 16px; display: inline-block; position: relative;
+    background: url(../img/treeview-default-line.gif) 0 0 no-repeat;
+    background-position: 0 -10px;
+}
+
+.treegrid-expander {
+    width:16px; height: 16px; display: inline-block; position: relative; cursor: pointer;
+    background: url(../img/treeview-default-line.gif) 0 0 no-repeat;
+}
+.treegrid-expander.glyphicon-minus{
+    background: url(../img/treeview-default.gif) -64px -25px no-repeat;
+}
+.treegrid-expander.glyphicon-plus{
+    background-position: -80px -3px;
+    background: url(../img/treeview-default.gif) -80px -3px no-repeat;
+}
+.glyphicon-minus:before, .glyphicon-plus:before {
+    content: '';
+}
+
+.treegrid-expander-expanded{background-image: url(../img/collapse.png); }
+.treegrid-expander-collapsed{background-image: url(../img/expand.png);}

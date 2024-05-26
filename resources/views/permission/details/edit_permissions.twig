@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="cb_top" style="margin: 0px auto; overflow-x: hidden;">
+
+        <div class="ibox float-e-margins">
+            <div class="cb_loader" style="display: none; margin-top:20px"></div>
+            <div class="ibox-title onSuccess_makeGreen">
+                <div class="ibox-tools">
+                    Permissions [Edit] &nbsp;:&nbsp;<span class="ibox-tool-userid" style="color:red; font-weight: 900;">{#{{ userId }}#}</span>
+                </div>
+            </div>
+
+            
+            <form id="cb_edit_permissions_details_form" class="form-horizontal" action="{{ route('routepermission.edit_permissions') }}" method="POST" enctype="multipart/form-data">
+                <table role="grid" id="edit_permissions_details_table" cellspacing="0" width="100%" data-token="{{ csrf_token() }}" data-date="{#{{ period.date }}#}">
+                    <thead>
+                        <tr>
+                            <th width="12%"></th>
+                            <th width="88%"></th>
+                            <th width="12%"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+
+                    <tfoot>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tfoot>
+                </table>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-md-10 col-sm-offset-2">
+                        <button id="edit_permissions_reset" class="btn btn-white" type="reset" disabled>Reset</button>
+                        <button id="edit_permissions_update" class="btn btn-primary" disabled>Save changes</button>
+                    </div>
+                </div>
+
+                {#<input name="user_id" type="hidden" class="form-control" value="{{ encrypted_ids[userId].user_id }}"> {# this should be encrypted because it is visible to the user and succeptible to being changed #}
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">app.ext({{js|json_encode()|raw}});</script>
+</body>
+
+</html>

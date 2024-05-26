@@ -1,0 +1,1 @@
+php /var/www/src/alpine/artisan queue:work --queue=manualul_check_the_progress_of_ready_zip_to_s3

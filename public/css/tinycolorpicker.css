@@ -1,0 +1,72 @@
+/* COLORPICKER 1 EXAMPLE */
+.colorPicker
+{
+    width:          30px;
+    /**height:         30px;*/
+    position: relative;
+    clear: both;
+    /**margin-top: 4px;*/
+    /**margin-bottom: -2px;*/
+    /**margin-left: 4px;*/
+    margin: 0px auto;
+}
+
+.colorPicker .track {
+    background:     url(../img/text-color.png) no-repeat 50% 50%;
+    height:         150px;
+    width:          150px;
+    padding:        0px;
+    position:       absolute;
+    cursor:         crosshair;
+    float:          left;
+    left:           -62px;
+    top:            -62px;
+    display:        none;
+    border:         1px solid #ccc;
+    z-index:        12;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    border-radius: 150px;
+
+}
+
+.colorPicker .color {
+    width:          25px;
+    height:         25px;
+    padding:        0px;
+    border:         1px solid #ccc;
+    display:        block;
+    position:       relative;
+    z-index:        11;
+    /**background-color: #EFEFEF;*/
+    -webkit-border-radius: 27px;
+    -moz-border-radius: 27px;
+    border-radius: 27px;
+    cursor: pointer;
+    margin-left: 1px;
+}
+
+.colorPicker .colorInner {
+    width:          23px;
+    height:         23px;
+    -webkit-border-radius: 27px;
+    -moz-border-radius: 27px;
+    border-radius: 27px;
+    margin-left: 0px;
+}
+
+.colorPicker .dropdown {
+    list-style: none;
+    display: none;
+    width: 27px;
+    position: absolute;
+    top: 28px;
+    border: 1px solid #ccc;
+    left: 0;
+    z-index: 1000;
+}
+
+.colorPicker .dropdown li{
+    height: 25px;
+    cursor: pointer;
+}

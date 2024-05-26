@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}{#{{ trans("#{lang}")}}#}">
+<!--simple-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    {#<title>{{ trans("seo.#{tpl}.title") }}</title>#}
+    {#<title>{{ trans("#{tpl}") }}</title>#}
+    <title>Upload Download Tool</title>
+    {#<meta name="keywords" content="{{ trans("seo.#{tpl}.keyword") }}">#}
+    {#<meta name="description" content="{{ trans("seo.#{tpl}.desc") }}">#}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="environment" content="{{ enviro }}">
+
+    {% block meta %}
+    {% endblock %}
+    <link href="{{ asset('favicon-120.png') }}?v={{ versioning }}" rel="Shortcut Icon" type="image/x-icon">
+    
+    {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+        <link href="{{ asset('main/br24emp_app.dev.css') }}?v={{ versioning }}" rel="stylesheet">
+    {% else %}
+        <link href="{{ asset('main/br24emp_app.min.css') }}?v={{ versioning }}" rel="stylesheet">
+    {% endif %}
+
+    <link href="{{ asset('css/animate.css') }}?v={{ versioning }}" rel="stylesheet">
+    <link href="{{ asset('css/awesome-bootstrap-checkbox.css') }}?v={{ versioning }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}?v={{ versioning }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-formhelpers.css') }}?v={{ versioning }}" rel="stylesheet">
+
+    {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+        <link href="{{ asset('main/br24emp_custom.dev.css') }}?v={{ versioning }}" rel="stylesheet">
+    {% else %}
+        <link href="{{ asset('main/br24emp_custom.min.css') }}?v={{ versioning }}" rel="stylesheet">
+    {% endif %}
+
+    <meta section="{{ trans("#{section}")}}" module="{{ trans("#{module}")}}" action="{{ trans("#{action}")}}">
+
+</head>
+<body class="gray-bg">
+    <div id="app" style="height: 100%">
+        <div class="loader" style="display: none"></div>
+        <div class="gray-bg main container-fluid">
+            <header>
+                {{ include('partials/login_header') }}
+            </header>
+
+            <main>
+                {% block content %}
+                {% endblock %}
+            </main>
+        </div>
+    </div>
+    
+    {% block js %}
+    {% endblock %}
+
+    <script type="text/javascript" src="{{ asset('js/jquery-3.4.1.min.js') }}?v={{ versioning }}"></script>
+    {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+        <script type="text/javascript" src="{{ asset('main/section/br24emp_freq.dev.js') }}?v={{ versioning }}"></script> {# REQUIRED for all sections #}
+    {% else %}
+        <script type="text/javascript" src="{{ asset('main/section/br24emp_freq.min.js') }}?v={{ versioning }}"></script> {# REQUIRED for all sections #}
+    {% endif %}
+    <script type="text/javascript">app.ext({{ js|raw }});</script>
+    <script type="text/javascript">app.util.locale();</script>
+    <script type="text/javascript">app.util.continuous_cookie_check(true);</script>
+    <script type="text/javascript">app.util.login419prevention();</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+#!/sbin/openrc-run
+
+# Laravel websockets serve using openrc
+# ----------------------------------
+# https://wiki.gentoo.org/wiki/OpenRC_to_systemd_Cheatsheet
+# https://wiki.gentoo.org/wiki/OpenRC/supervise-daemon
+# place this file /etc/init.d/laravel-websockets-service
+# https://confluence.atlassian.com/kb/starting-service-on-linux-throws-a-no-such-file-or-directory-error-794203722.html
+# use command (to remove carriage retun characters):- sudo sed -i -e 's/\r//g' /etc/init.d/laravel-websockets-service
+# make this file executable using:- sudo chmod a+x /etc/init.d/laravel-websockets-service
+# make the shell script executable:- sudo chmod a+x /var/www/src/alpine/openrc_queue_scripts/laravel-websockets-service.sh
+# run this command to enable service:
+# sudo rc-update add laravel-websockets-service
+# sudo rc-service laravel-websockets-service start
+# sudo rc-service laravel-websockets-service status
+
+name=${RC_SVCNAME}
+description="Laravel Websockets Serve"
+supervisor="supervise-daemon"
+command="/bin/sh"
+command_args="/var/www/src/alpine/openrc_queue_scripts/${RC_SVCNAME}.sh"
+command_user="root:www-data"
+pidfile="/var/run/${RC_SVCNAME}.pid"
+output_log="/var/www/src/alpine/storage/logs/openrc/$(date +%Y_%m_%d)_${RC_SVCNAME}.log"
+error_log="/var/www/src/alpine/storage/logs/openrc/$(date +%Y_%m_%d)_${RC_SVCNAME}.err"
+
+depend() {
+    need net
+}
+
+reload() {
+        ebegin "Reloading laravel-websockets-service configuration"
+#       start-stop-daemon --exec $command --signal HUP
+        ${supervisor} ${RC_SVCNAME} --signal HUP --pidfile "${pidfile}"
+        eend $?
+}

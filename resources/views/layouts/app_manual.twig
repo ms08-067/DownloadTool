@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="{{ trans("#{locale}")}}" currency="{{ trans("#{currency}")}}">
+<!--appsdasda-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    {#<title>{{ trans("seo.#{tpl}.title") }}</title>#}
+    {#<title>{{ trans("#{tpl}") }}</title>#}
+    <title>{{ trans("#{page_title_name}")}}</title>
+    <meta name="keywords" content="{{ trans("seo.#{tpl}.keyword") }}">
+    <meta name="description" content="{{ trans("seo.#{tpl}.desc") }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="environment" content="{{ enviro }}">
+    
+    {% block meta %}
+    {% endblock %}
+
+    <meta section="{{ trans("#{section}")}}" module="{{ trans("#{module}")}}" action="{{ trans("#{action}")}}">
+
+    <link href="{{ asset('favicon-120.png') }}?v={{ versioning }}" rel="Shortcut Icon" type="image/x-icon">
+
+    {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+        <link href="{{ asset('main/br24emp_app.dev.css') }}?v={{ versioning }}" rel="stylesheet">
+    {% else %}
+        <link href="{{ asset('main/br24emp_app.min.css') }}?v={{ versioning }}" rel="stylesheet">
+    {% endif %}
+
+    <link href="{{ asset('css/animate.css') }}?v={{ versioning }}" rel="stylesheet">
+    <link href="{{ asset('css/awesome-bootstrap-checkbox.css') }}?v={{ versioning }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}?v={{ versioning }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-formhelpers.css') }}?v={{ versioning }}" rel="stylesheet">
+
+    {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+        <link href="{{ asset('main/br24emp_custom_manual.dev.css') }}?v={{ versioning }}" rel="stylesheet">
+    {% else %}
+        <link href="{{ asset('main/br24emp_custom_manual.min.css') }}?v={{ versioning }}" rel="stylesheet">
+    {% endif %}
+
+    <link href="{{ asset('css/datatables.css') }}?v={{ versioning }}" rel="stylesheet">
+    <link href="{{ asset('css/dataTables.fixedColumns.css') }}?v={{ versioning }}" rel="stylesheet">
+    <link href="{{ asset('css/dataTables.fixedHeader.css') }}?v={{ versioning }}" rel="stylesheet">
+    {#<link href="{{ asset('css/dataTables.colResize.css') }}?v={{ versioning }}" rel="stylesheet">#}
+
+    
+    {# <link href="{{ asset('css/piemenu_minimal.css') }}?v={{ versioning }}" rel="stylesheet"> #}
+    {# <link href="{{ asset('css/datepicker.css') }}?v={{ versioning }}" rel="stylesheet"> #}
+    {# <link href="{{ asset('css/croppie.css') }}?v={{ versioning }}" rel="stylesheet"> #}
+    <link href="{{ asset('css/rateit.css') }}?v={{ versioning }}" rel="stylesheet">
+    {# <link href="{{ asset('css/treegrid.css') }}?v={{ versioning }}" rel="stylesheet"> #}
+    <link href="{{ asset('css/nprogress.css') }}?v={{ versioning }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery.multiselect.css') }}?v={{ versioning }}" rel="stylesheet">
+    <link href="{{ asset('css/easy-autocomplete.css') }}?v={{ versioning }}" rel="stylesheet">
+    {# <link href="{{ asset('css/datepickerUlti.css') }}?v={{ versioning }}" rel="stylesheet"> #}
+    {# <link href="{{ asset('css/on-off-switch.css') }}?v={{ versioning }}" rel="stylesheet"> #}
+    {# <link href="{{ asset('css/colorbox.css') }}?v={{ versioning }}" rel="stylesheet"> #}
+    <link href="{{ asset('css/fileinput.css') }}?v={{ versioning }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery-ui-datetimepickeraddon.css') }}?v={{ versioning }}" rel="stylesheet">
+
+    <link href="{{ asset('css/jquery-confirm.css') }}?v={{ versioning }}" rel="stylesheet">
+    <link href="{{ asset('css/selectize.default.css') }}?v={{ versioning }}" rel="stylesheet">
+    {# <link href="{{ asset('css/jquery.qtip.css') }}?v={{ versioning }}" rel="stylesheet"> #}
+
+    <link href="{{ asset('css/jquery-ui-timepicker-addon.css') }}?v={{ versioning }}" rel="stylesheet">
+    <link href="{{ asset('css/tinycolorpicker.css') }}?v={{ versioning }}" rel="stylesheet">
+
+    {% block style_css %}
+    {% endblock %}
+
+</head>
+<body class="top-navigation">
+    <script type="text/javascript" src="{{ asset('js/canvas-nest.js') }}?v={{ versioning }}"></script>
+    {# <canvas id="c_n13" width="100%" height="100%" style="position: fixed;top: 0px;left: 0px;z-index: 0;opacity: 1;"></canvas> #}
+    <div id="app" style="height: 100%">
+        
+        {% block modalcontent %}
+        {% endblock %}
+
+        <div class="loader" style="display: block"></div>
+        <div class="gray-bg main container-fluid">
+            <header>
+                {{ include('partials/header_manual') }}
+            </header>
+
+            <main id="main" style="padding-top: 58px">
+                {% block content %}
+                {% endblock %}
+                <div class="modal-backdrop fade in hidden" id="backdrop"></div>
+            </main>
+
+            <footer class="gray-bg container-fluid">
+                {{ include('partials/footer') }}
+            </footer>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{{ asset('js/jquery-3.4.1.js') }}?v={{ versioning }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-ui-datetimepickeraddon.js') }}?v={{ versioning }}"></script>
+    {#<script type="text/javascript" src="{{ asset('js/jquery-ui-timepicker-addon-i18n.js') }}?v={{ versioning }}"></script>#}
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}?v={{ versioning }}"></script>
+
+    {% block js %}
+    {% endblock %} {# js block before app.js #}
+
+
+    {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+        <script type="text/javascript" src="{{ asset('main/section/br24emp_freq.dev.js') }}?v={{ versioning }}"></script> {# REQUIRED for all sections #}
+    {% else %}
+        <script type="text/javascript" src="{{ asset('main/section/br24emp_freq.min.js') }}?v={{ versioning }}"></script> {# REQUIRED for all sections #}
+    {% endif %}
+
+    {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+        <script type="text/javascript" src="{{ asset('main/section/br24emp_ops_init.dev.js') }}?v={{ versioning }}"></script>
+    {% else %}
+        <script type="text/javascript" src="{{ asset('main/section/br24emp_ops_init.min.js') }}?v={{ versioning }}"></script>
+    {% endif %}
+    
+    {% if section|lower == 'home' %}
+        {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_home_init.dev.js') }}?v={{ versioning }}"></script>
+        {% else %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_home_init.min.js') }}?v={{ versioning }}"></script>
+        {% endif %}
+    {% elseif section|lower == 'mydata' %}
+        {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_mydata_init.dev.js') }}?v={{ versioning }}"></script>
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_employeeprofile_init.dev.js') }}?v={{ versioning }}"></script>
+        {% else %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_mydata_init.min.js') }}?v={{ versioning }}"></script>
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_employeeprofile_init.min.js') }}?v={{ versioning }}"></script>
+        {% endif %}
+    {% elseif section|lower == 'organization' %}
+        {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_organization_init.dev.js') }}?v={{ versioning }}"></script>
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_employeeprofile_init.dev.js') }}?v={{ versioning }}"></script>
+        {% else %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_organization_init.min.js') }}?v={{ versioning }}"></script>
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_employeeprofile_init.min.js') }}?v={{ versioning }}"></script>
+        {% endif %}
+    {% elseif section|lower == 'attendance' %}
+        {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_attendance_init.dev.js') }}?v={{ versioning }}"></script>
+        {% else %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_attendance_init.min.js') }}?v={{ versioning }}"></script>
+        {% endif %}        
+    {% elseif section|lower == 'bonuses' %}
+        {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_bonuses_init.dev.js') }}?v={{ versioning }}"></script>
+        {% else %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_bonuses_init.min.js') }}?v={{ versioning }}"></script>
+        {% endif %}
+    {% elseif section|lower == 'accounting' %}
+        {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_accounting_init.dev.js') }}?v={{ versioning }}"></script>
+        {% else %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_accounting_init.min.js') }}?v={{ versioning }}"></script>
+        {% endif %}
+    {% elseif section|lower == 'management' %}
+        {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_management_init.dev.js') }}?v={{ versioning }}"></script>
+        {% else %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_management_init.min.js') }}?v={{ versioning }}"></script>
+        {% endif %}
+    {% elseif section|lower == 'others' %}
+        {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_others_init.dev.js') }}?v={{ versioning }}"></script>
+        {% else %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_others_init.min.js') }}?v={{ versioning }}"></script>
+        {% endif %}
+    {% elseif section|lower == 'settings' %}
+        {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_settings_init.dev.js') }}?v={{ versioning }}"></script>
+        {% else %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_settings_init.min.js') }}?v={{ versioning }}"></script>
+        {% endif %}        
+    {% elseif section|lower == 'ops' %}
+        {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_ops_init.dev.js') }}?v={{ versioning }}"></script>
+        {% else %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_ops_init.min.js') }}?v={{ versioning }}"></script>
+        {% endif %}        
+    {% elseif section|lower == 'permissions' %}
+        {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_permissions_init.dev.js') }}?v={{ versioning }}"></script>
+        {% else %}
+            <script type="text/javascript" src="{{ asset('main/section/br24emp_permissions_init.min.js') }}?v={{ versioning }}"></script>
+        {% endif %}         
+    {% else %}
+        {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+            <script type="text/javascript" src="{{ asset('main/br24emp_app.dev.js') }}?v={{ versioning }}"></script>
+        {% else %}
+            <script type="text/javascript" src="{{ asset('main/br24emp_app.min.js') }}?v={{ versioning }}"></script>
+        {% endif %}
+    {% endif %}
+
+
+    {# must be after _init.dev.js or _init.min.js #}
+    <script type="text/javascript" id="extends_app">app.ext({{ js|raw }});</script>
+    <script type="text/javascript">app.util.locale();</script>
+
+    {% if doesAuthUserHaveElevatedPrivileges == true %}
+        {#<script type="text/javascript">app.ajaxed_notifications.index.initialise_employee_once_when_at_home();</script>#}
+        {#<script type="text/javascript">app.ajaxed_notifications.index.pusher_notification_initialised_employee();</script>#}
+        {#<script type="text/javascript">app.ajaxed_notifications.index.constantly_check_logged_in_status();</script>#}
+    {% endif %}
+
+    <script type="text/javascript">app.ajaxed_notifications.index.full_scale_logout();</script>
+    <script type="text/javascript">app.ajaxed_notifications.index.auto_fade_out_alert_dismissable();</script>
+    <script type="text/javascript">app.ajaxed_notifications.index.fixed_nav_header_on_scroll();</script>
+    <script type="text/javascript">app.util.continuous_cookie_check(false);</script>
+
+    {% block init %}
+    {% endblock %}
+</body>
+</html>
+

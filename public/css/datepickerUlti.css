@@ -1,0 +1,332 @@
+#datepicker_ulti {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    width: 196px;
+    height: 147px;
+    position: absolute;
+    cursor: default;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.datepickerUltiContainer {
+    background: #aaa;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.datepickerUltiBorderT {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    right: 10px;
+    height: 10px;
+    background: url(../img/custom_t.png);
+}
+
+.datepickerUltiBorderB {
+    position: absolute;
+    left: 10px;
+    bottom: 0;
+    right: 10px;
+    height: 10px;
+    background: url(../img/custom_b.png);
+}
+
+.datepickerUltiBorderL {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    top: 10px;
+    width: 10px;
+    background: url(../img/custom_l.png);
+}
+
+.datepickerUltiBorderR {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    top: 10px;
+    width: 10px;
+    background: url(../img/custom_r.png);
+}
+
+.datepickerUltiBorderTL {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background: url(../img/custom_tl.png);
+}
+
+.datepickerUltiBorderTR {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background: url(../img/custom_tr.png);
+}
+
+.datepickerUltiBorderBL {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background: url(../img/custom_bl.png);
+}
+
+.datepickerUltiBorderBR {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background: url(../img/custom_br.png);
+}
+
+.datepickerHidden {
+    display: none;
+}
+
+#datepicker_ulti table {
+    border-collapse: collapse;
+}
+
+#datepicker_ulti a {
+    color: #eee;
+    text-decoration: none;
+    cursor: default;
+    outline: none;
+    font-size: 10px;
+}
+
+#datepicker_ulti td.datepickerUltiNotInMonth a {
+    color: #121212;
+    text-decoration: none;
+    cursor: default;
+    outline: none;
+}
+
+
+#datepicker_ulti table td {
+    text-align: right;
+    padding: 0;
+    margin: 0;
+}
+
+#datepicker_ulti th {
+    text-align: center;
+    color: #fff;
+    font-weight: normal;
+}
+
+#datepicker_ulti tbody th {
+    text-align: left;
+}
+
+#datepicker_ulti tbody a {
+    display: block;
+}
+
+.datepickerUltiDays a {
+    width: 20px;
+    line-height: 16px;
+    height: 16px;
+    padding-right: 2px;
+    font-weight: 900;
+}
+
+.datepickerUltiYears a,
+.datepickerUltiMonths a {
+    width: 44px;
+    line-height: 36px;
+    height: 32px;
+    text-align: center;
+}
+
+td.datepickerUltiNotInMonth a {
+    color: #121212;
+}
+
+tbody.datepickerUltiDays td.datepickerUltiSelected {
+    background: #FFD455;
+}
+
+
+#datepicker_ulti td.datepickerUltiSelected a:hover {
+    color: #FF002A;
+}
+
+#datepicker_ulti td.datepickerUltiSelected a {
+    color: #000;
+}
+
+#datepicker_ulti .datepickerUltiSelected td.datepickerUltiNotInMonth a {
+    color: #f00;
+}
+
+#datepicker_ulti th.datepickerWeek a {
+    color: #888;
+    font-weight: normal;
+}
+
+.datepickerUltiWeek span{
+  font-weight: 100;
+  text-align: left;
+}
+
+.datepickerUltiDoW span{
+  font-size: 8px;
+}
+
+tbody.datepickerUltiDays td.datepickerUltiNotInMonth.datepickerUltiSelected {
+    background: #121212;
+}
+
+#datepicker_ulti td.datepickerUltiNotInMonth.datepickerUltiSelected a {
+    color: #121212;
+}
+
+tbody.datepickerUltiYears td.datepickerUltiSelected,
+tbody.datepickerUltiMonths td.datepickerUltiSelected {
+    background: #17384d;
+}
+
+#datepicker_ulti a:hover,
+#datepicker_ulti a:hover {
+    color: #FF002A;
+}
+
+#datepicker_ulti td.datepickerUltiNotInMonth a:hover {
+    color: #121212;
+}
+
+#datepicker_ulti tbody th {
+    text-align: center;
+}
+
+#datepicker_ulti tbody th.datepickerUltiWeek span{
+    color: #ff0;
+    text-align: left;
+}
+
+.datepickerUltiSpace div {
+    width: 10px;
+}
+
+.datepickerUltiGoNext a,
+.datepickerUltiGoPrev a,
+.datepickerUltiMonth a {
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+}
+
+.datepickerUltiGoNext a {
+    float: right;
+    width: 10px;
+}
+
+.datepickerUltiGoPrev a {
+    float: left;
+    width: 10px;
+}
+
+table.datepickerUltiViewDays tbody.datepickerUltiMonths,
+table.datepickerUltiViewDays tbody.datepickerUltiYears {
+    display: none;
+}
+
+table.datepickerUltiViewMonths tbody.datepickerUltiDays,
+table.datepickerUltiViewMonths tbody.datepickerUltiYears,
+table.datepickerUltiViewMonths tr.datepickerDoW {
+    display: none;
+}
+
+table.datepickerUltiViewYears tbody.datepickerUltiDays,
+table.datepickerUltiViewYears tbody.datepickerUltiMonths,
+table.datepickerUltiViewYears tr.datepickerDoW {
+    display: none;
+}
+
+td.datepickerUltiDisabled a,
+td.datepickerUltiDisabled.datepickerUltiNotInMonth a {
+    color: #333;
+}
+
+td.datepickerUltiDisabled a:hover {
+    color: #1cd;
+}
+
+
+.datepickerUltinoselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+
+
+td.datepickerUltiSpecial a {
+    background: #41f471;
+}
+
+td.datepickerUltiSpecial.datepickerUltiSelected a {
+    background: #80f442;
+}
+
+
+
+
+
+td.datepickerUltiAnotherClass a {
+    background: #7142f4;
+}
+
+td.datepickerUltiAnotherClass.datepickerUltiSelected a {
+    background: #9541f4;
+}
+
+td.datepickerUltiSpecial2 a {
+    background: #bc42f4;
+}
+
+td.datepickerUltiSpecial2.datepickerUltiSelected a {
+    background: #e541f4;
+}
+
+td.datepickerUltiSpecial3 a {
+    background: #f49e42;
+}
+
+td.datepickerUltiSpecial3.datepickerUltiSelected a {
+    background: #f4b541;
+}
+
+td.datepickerUltiSpecial4 a {
+    background: #f4e241;
+}
+
+td.datepickerUltiSpecial4.datepickerUltiSelected a {
+    background: #f4f441;
+}
+
+
+
+
+

@@ -1,0 +1,33 @@
+{% if 'WRITE permissions' in auth_user_permissions %}
+    <a id="cb_add_permission" class="ajax btn btn-primary btn-xs" href="{{ route('AjaxRoutingsController.getRoutePermission_TabPermissions_add_permissions_CB') }}" title="Add Permission" target="_blank">{{ trans('message.add_permission') }}</a>
+{% else %}
+{% endif %}
+<br>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover dataTable" cellspacing="0" width="100%" id="permissionsTable">
+        <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th class="text-center">Company Position</th>
+                <th class="text-center">Actions</th>
+                <th class="text-center">Last Updated By</th>
+                <th class="text-center">Last Updated</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+        
+        <tfoot>
+            <tr>
+                <th class="text-center">#</th>
+                <th class="text-center">Company Position</th>
+                <th class="text-center">Actions</th>
+                <th class="text-center">Last Updated By</th>
+                <th class="text-center">Last Updated</th>
+            </tr>
+        </tfoot>
+        
+    </table>
+</div>
+

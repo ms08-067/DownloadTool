@@ -1,0 +1,7 @@
+{
+  "policies": {
+    "BlockAboutConfig": true,
+    "LocalFileLinks": ["http://alpine.lc/",
+                       "http://down-up-srv.br24.int/"]
+  }
+}

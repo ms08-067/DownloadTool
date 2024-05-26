@@ -1,0 +1,10 @@
+{
+    "/main/app_echo.min.js": "/main/app_echo.min.js",
+    "/main/br24emp_app.min.css": "/main/br24emp_app.min.css",
+    "/main/br24emp_custom.min.css": "/main/br24emp_custom.min.css",
+    "/main/br24emp_custom_manual.min.css": "/main/br24emp_custom_manual.min.css",
+    "/main/section/br24emp_freq.min.js": "/main/section/br24emp_freq.min.js",
+    "/main/section/br24emp_home_init.min.js": "/main/section/br24emp_home_init.min.js",
+    "/main/section/br24emp_ops_init.min.js": "/main/section/br24emp_ops_init.min.js",
+    "/main/section/br24emp_permissions_init.min.js": "/main/section/br24emp_permissions_init.min.js"
+}

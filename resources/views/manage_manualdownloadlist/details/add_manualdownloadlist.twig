@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="cb_top" style="margin: 0px auto; overflow-x: hidden; height: 100%">
+
+        <div class="ibox float-e-margins">
+            <div class="cb_loader" style="display: none; margin-top:20px"></div>
+            <div class="onSuccess_makeGreen" style="min-height: 5px">
+                {#<div class="ibox-tools">#}
+                {#Working Shift [Add]#}
+                {#</div>#}
+            </div>
+
+            <form id="cb_add_REPLACEBYRENAME_details_form" class="form-horizontal" action="{{ route('REPLACEBYRENAME.add_REPLACEBYRENAME') }}" method="POST" enctype="multipart/form-data">
+                <table role="grid" id="add_REPLACEBYRENAME_details_table" cellspacing="0" width="100%" data-token="{{ csrf_token() }}" data-date="">
+                    <thead>
+                        <tr>
+                            <th width="15%"></th>
+                            <th width="85%"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                <label class="pull-right text-right" data-html="true" data-container="body" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="{{ trans('message.advance_payment_request.calendar_date') }}">{{ trans('message.advance_payment_request.calendar_date') }}<span class="required-field">&nbsp;*</span></label>
+                            </td>
+                            <td class="form-group{{ errors.has('calendar_date') ? ' has-error' : '' }}">{% set calendar_date_value = old('calendar_date') ? old('calendar_date') : customRCMessageSchedule.calendar_date %}
+                                <input id="calendar_date" name="calendar_date" class="form-control calendar_date" value="{{ calendar_date_value }}" title="Custom RC Message Schedule Description" placeholder="{{ trans('message.advance_payment_request.calendar_date.placeholder') }}">
+                                {% if errors.has('calendar_date') %}
+                                    <span class="help-block">
+                                        <strong>{{ errors.first('calendar_date') }}</strong>
+                                    </span>
+                                {% endif %}
+                            </td>
+                            
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label class="pull-right text-right" data-html="true" data-container="body" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="{{ trans('message.advance_payment_request.recipients.placeholder') }}">{{ trans('message.advance_payment_request.recipients') }}<span class="required-field">&nbsp;*</span></label>
+                            </td>
+                            <td class="form-group{{ errors.has('recipients') ? ' has-error' : '' }}">{% set recipients_value = old('recipients') ? old('recipients') : customRCMessageSchedule.recipients %}
+                                <select id="recipients" class="form-control" title="{{ trans('message.advance_payment_request.recipients.placeholder') }}" multiple></select>
+
+                                {% if errors.has('recipients') %}
+                                    <span class="help-block">
+                                        <strong>{{ errors.first('recipients') }}</strong>
+                                    </span>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+
+
+                        <tr>
+                            <td>
+                                <label class="pull-right text-right" data-html="true" data-container="body" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="{{ trans('message.advance_payment_request.advance_amount') }}">{{ trans('message.advance_payment_request.advance_amount') }}<span class="required-field">&nbsp;*</span></label>
+                            </td>
+                            <td class="form-group{{ errors.has('advance_amount') ? ' has-error' : '' }}">{% set advance_amount_value = old('advance_amount') ? old('advance_amount') : customRCMessageSchedule.advance_amount %}
+                                <input id="advance_amount" name="advance_amount" class="form-control" value="{{ advance_amount_value }}" title="Advance Amount" placeholder="{{ trans('message.advance_payment_request.advance_amount.placeholder') }}">
+                                {% if errors.has('advance_amount') %}
+                                    <span class="help-block">
+                                        <strong>{{ errors.first('advance_amount') }}</strong>
+                                    </span>
+                                {% endif %}
+                            </td>
+                            
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <label class="pull-right text-right" data-html="true" data-container="body" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Custom RC Message Schedule Title">{{ trans('message.advance_payment_request.reason') }}<span class="required-field">&nbsp;*</span></label>
+                            </td>
+                            <td class="form-group{{ errors.has('reason') ? ' has-error' : '' }}">{% set reason_value = old('reason') ? old('reason') : customRCMessageSchedule.reason %}
+                                <input id="reason" name="reason" class="form-control" value="{{ reason_value }}" title="Advance Payment Reason" placeholder="{{ trans('message.advance_payment_request.reason.placeholder')}}">
+                                {% if errors.has('reason') %}
+                                    <span class="help-block">
+                                        <strong>{{ errors.first('reason') }}</strong>
+                                    </span>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <label class="pull-right text-right" data-html="true" data-container="body" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Custom RC Message Schedule Title">{{ trans('message.advance_payment_request.payment_period_description') }}<span class="required-field">&nbsp;*</span></label>
+                            </td>
+                            <td class="form-group{{ errors.has('payment_period_description') ? ' has-error' : '' }}">{% set payment_period_description_value = old('payment_period_description') ? old('payment_period_description') : customRCMessageSchedule.payment_period_description %}
+                                <textarea id="payment_period_description" name="payment_period_description" class="form-control" title="Custom RC Message Schedule payment_period_description" placeholder="{{ trans('message.advance_payment_request.payment_period_description.placeholder')}}" style="resize: vertical;" rows="3">{{ payment_period_description_value }}</textarea>
+                                {% if errors.has('payment_period_description') %}
+                                    <span class="help-block">
+                                        <strong>{{ errors.first('payment_period_description') }}</strong>
+                                    </span>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                    <tfoot>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tfoot>
+                </table>
+
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <div class="col-sm-10 col-md-10 col-sm-offset-2">
+                        <button id="add_REPLACEBYRENAME_reset" class="btn btn-white" type="reset" disabled>Reset</button>
+                        <button id="add_REPLACEBYRENAME_update" class="btn btn-primary" disabled>Save changes</button>
+                    </div>
+                </div>
+                {#<input name="user_id" type="hidden" class="form-control" value="{{ encrypted_ids[userId].user_id }}"> {# this should be encrypted because it is visible to the user and succeptible to being changed #}
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">app.ext({{js|json_encode()|raw}});</script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<div class="row">
+    <div class="col-lg-12">
+        <nav class="navbar navbar-default navbar-static-top sticky-header fixed-header-on-scroll">
+            <div class="container-fluid visitor white-bg">
+                <div class="navbar-header">
+                    <!-- Collapsed Hamburger -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#br24-navbar">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Branding Image -->
+                    <div class="dashboard-brand unselectable">
+                        <img src="{{ asset('favicon-120.png') }}?v={{ versioning }}" height="57px" width="57px" alt="Br24 logo" id="br24_logo">
+                    </div>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="br24-navbar">
+                    <ul class="nav navbar-nav">
+
+                        {# {% if can('develop', auth_user()) %} #}
+                        {# <li><a class="button {% if section == 'lists' %} active {% endif %}" href="{{ route('ops.employee.index', [], false) }}"><i class="fa fa-list-ol"></i>{{ trans('message.partials.header.lists') }}</a></li> #}
+                        {# {% endif %} #}
+
+                        {# <li><a class="button {% if section == 'home' %} active {% endif %}" href="{{ route('home', [], false) }}">&nbsp;&nbsp;<i class="fa fa-home"></i></a></li> #}
+
+                        <li><a class="button" href="{{ route('downloadlist.index', [], false) }}">Auto Download List</a></li>
+                        <li><a class="button" href="{{ route('home.uploadfiles.get', [], false) }}">Upload Files</a></li>
+                        <li><a class="button" href="{{ route('manualdownloadlist.index', [], false) }}">Manual Download list</a></li>
+
+
+
+                    </ul>
+                    
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        {# {% if can('develop', auth_user()) %} #}
+                        
+                        {# {{ dump(auth_user_permissions) }} #}
+                        {# {{auth_user()}} #}
+
+                        {% if can('develop', auth_user()) %}
+                            {#<li><a class="button" href="{{ route('ops.populate_delivery_time_for_all_those_missing_in_download_tasks_list', [], false) }}">Get Delivery Time for missing</a></li>#}
+                            {#<li><a class="button" href="{{ route('ops.populateifnotintaskUploadsgetfromtaskDownloads', [], false) }}">If not in tasksUpload get from taskDownload</a></li>#}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle dropbtn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('message.partials.header.logs') }}<span class="caret"></span></a>
+                                <ul class="dropdown-menu dropdown-content">
+                                    <li><a class="button" href="{{ route('home.prepare_rocket_chat_connection.get', [], false) }}">Prep RC Auth</a></li>
+                                    <li><a class="button" href="/phpliteadmin.php">phpLiteAdmin</a></li>
+                                    <li><a class="button" href="{{ route('logs.log.dev', [], false) }}" target="_blank">Logs</a></li>
+                                    <li>&nbsp;</li>
+                                    <li><a class="button" href="{{ route('home.check_rocket_chat_group_lists.get', [], false) }}" target="_blank">RC group lists</a></li>
+                                    <li><a class="button" href="{{ route('home.check_tasks_downloads_files_and_upload_files.get', [], false) }}" {#target="_blank"#}>DL/UL in progress</a></li>
+                                    {# also want to have the route permissions table in there so can manage some permissions to routes #}
+                                    <li><a href="/laravel-websockets" target="_blank">{{ trans('message.partials.header.logs.websocket_logs') }}</a></li>
+                                </ul>
+                            </li>
+
+                        {% else %}
+                            {% if 'READ logs' in auth_user_permissions %}
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle dropbtn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('message.partials.header.logs') }}<span class="caret"></span></a>
+                                    <ul class="dropdown-menu dropdown-content">
+                                        <li><a class="button" href="{{ route('home.prepare_rocket_chat_connection.get', [], false) }}">Prep RC Auth</a></li>
+                                        <li><a class="button" href="/phpliteadmin.php">phpLiteAdmin</a></li>
+                                        <li><a class="button" href="{{ route('logs.log.dev', [], false) }}" target="_blank">Logs</a></li>
+                                        {# <li><a href="/laravel-websockets" target="_blank">{{ trans('message.partials.header.logs.websocket_logs') }}</a></li> #}
+                                    </ul>
+                                </li>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if 'READ permissions' in auth_user_permissions %}
+                            <li><a class="button {% if module == 'permissions' %} active {% endif %}" href="{{ route('permissions.permissions.index', [], false) }}"><i class="fa fa-unlock"></i>{{ trans('message.partials.header.permissions') }}</a></li>
+                        {% else %}
+                        {% endif %}
+
+                        <li style="display:inline-block; margin-left: 15px">
+                            <p class="navbar-text" style="margin-left: 0; margin-right: 0; padding-top: 1px;">
+                                <span><i style="cursor: pointer" data-locale="vi" data-url="{{ route('user.lang', {'locale':'vi'}) }}" class="glyphicon bfh-flag-VN lang-vi locale" title="{{ trans('message.partials.lang.vi') }}"></i></span>
+                            </p>
+                        </li>
+                        <li style="display:inline-block;">
+                            <p class="navbar-text" style="margin-left: 0; margin-right: 0; padding-top: 1px;">
+                                <span><i style="cursor: pointer" data-locale="de" data-url="{{ route('user.lang', {'locale':'de'}) }}" class="glyphicon bfh-flag-DE lang-de locale" title="{{ trans('message.partials.lang.de') }}"></i></span>
+                            </p>
+                        </li>
+                        <li style="display:inline-block;">
+                            <p class="navbar-text" style="margin-left: 0; margin-right: 0; padding-top: 1px">
+                                <span><i style="cursor: pointer" data-locale="en" data-url="{{ route('user.lang', {'locale':'en'}) }}" class="glyphicon bfh-flag-GB lang-en locale" title="{{ trans('message.partials.lang.en') }}"></i></span>
+                            </p>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle dropbtn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                {{ currency|upper }}&nbsp;&nbsp;<span class="caret"></span>
+                            </a>
+                            {#<ul class="dropdown-menu dropdown-content">#}
+                            {#{% if currency == 'VND' %}{% else %}<li><a href="{{ route('user.currency', {'currency':'VND'}) }}" title="{{ trans('message.partials.currency.vi') }}">VND</a></li>{% endif %}#}
+                            {#{% if currency == 'USD' %}{% else %}<li><a href="{{ route('user.currency', {'currency':'USD'}) }}" title="{{ trans('message.partials.currency.en') }}">USD</a></li>{% endif %}#}
+                            {#{% if currency == 'EUR' %}{% else %}<li><a href="{{ route('user.currency', {'currency':'EUR'}) }}" title="{{ trans('message.partials.currency.de') }}">EUR</a></li>{% endif %}#}
+                            {#</ul>#}
+                        </li>
+                        <li class="dropdown">
+                            <a id="auth_fullname" href="#" class="dropdown-toggle dropbtn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                {{ auth_fullname|title }}&nbsp;<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-content app_user_common">
+                                {#<li><a id="change_password" href="{{ route('password.change', [], false) }}">Change password</a></li>#}
+                                <li><a id="logout" class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit(); document.getElementById('logout').parentNode.parentNode.remove();">
+                                    <i class="fa fa-sign-out"></i>&nbsp;{{ trans('message.partials.header.logout') }}</a>
+                                </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="progress-bar-parent" style="height: 10px; width: 100%; background-color: rgba(255,255,255,0);">
+            </div>
+        </nav>
+    </div>
+</div>

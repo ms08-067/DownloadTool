@@ -1,0 +1,1 @@
+php /var/www/src/alpine/artisan queue:work --queue=manualul_send_the_ready_zip_to_s3

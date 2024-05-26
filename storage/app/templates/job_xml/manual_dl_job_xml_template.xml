@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<job>
+    <customerId></customerId>
+    <customerFtp></customerFtp>
+    <prio></prio>
+    <jobId></jobId>
+    <jobIdTitle></jobIdTitle>
+    <status></status>
+    <jobTitle><![CDATA[]]></jobTitle>
+    <amount></amount>
+    <deliveryProduction></deliveryProduction>
+    <isExpress></isExpress>
+    <minutesPerImage></minutesPerImage>
+    <jobInfo><![CDATA[]]></jobInfo>
+    <jobInfoProduction><![CDATA[]]></jobInfoProduction>
+
+
+    <services>
+
+            <service><![CDATA[]]></service>
+            <serviceId></serviceId>
+    </services>
+    <parentJobId></parentJobId>
+        <parentJobIdTitle></parentJobIdTitle>
+        <originalJobId></originalJobId>
+
+</job>

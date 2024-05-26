@@ -1,0 +1,28 @@
+<br>
+<div class="table-responsive_n" style="overflow-x: none; min-height: 0.01%;">
+    {# {{ dump(groups) }} #}
+    <table class="table table-bordered table-hover dataTable" cellspacing="0" width="100%" id="rolepositionTable" style="table-layout: fixed; word-wrap:break-word;">
+        <thead>
+            <tr>
+                <th class="text-center">Permission</th>
+                <th class="text-center">Section</th>
+                {% for company_position in groups %}
+                    <th class="text-center">{{ company_position.name }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th class="text-center">Permission</th>
+                <th class="text-center">Section</th>
+                {% for company_position in groups %}
+                    <th class="text-center">{{ company_position.name }}</th>
+                {% endfor %}
+            </tr>
+        </tfoot>
+    </table>
+</div>

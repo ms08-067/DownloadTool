@@ -1,0 +1,74 @@
+{% extends "layouts/app" %}
+
+{% block modalcontent %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                {#<div class="ibox-title">#}
+                {#<h5>Route Permissions</h5>#}
+                {#</div>#}
+                <div class="ibox-content" style="padding-top: 0px">
+                    <div role="tabpanel" class="tab-pane" id="rolepositionInfo">
+                    </div>
+                    
+                    {#<div class="row">#}
+                    {#<div>#}
+                    {#<!-- Nav tabs -->#}
+                    {#<ul class="nav nav-tabs" role="tablist">#}
+                    {#<li role="presentation" class="unselectable">#}
+                    {#<a id="anchor_rolepositionInfo" aria-controls="rolepositionInfo" data-html="true" data-container="body" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Company Roles/ Positions">Roles Info</a>#}
+                    {#</li>#}
+                    {#<li role="presentation" class="unselectable">#}
+                    {#<a id="anchor_permissionsInfo" aria-controls="permissionsInfo" data-html="true" data-container="body" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="Company Permissions">Permissions Info</a>#}
+                    {#</li>#}
+                    {#</ul>#}
+                    {##}
+                    {#<!-- Tab panes -->#}
+                    {#<div class="tab-content">#}
+                    {#<div role="tabpanel" class="tab-pane" id="rolepositionInfo">#}
+                    {#</div>#}
+                    {#<div role="tabpanel" class="tab-pane" id="permissionsInfo">#}
+                    {#</div>#}
+                    {#</div>#}
+                    {#</div>#}
+                    {#</div>#}
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %} 
+
+{% block js %}
+    <script type="text/javascript" src="{{ asset('js/nprogress.js') }}?v={{ versioning }}"></script>
+
+    {#<script type="text/javascript" src="{{ asset('js/datepickerUlti.js') }}?v={{ versioning }}"></script>#}
+    <script type="text/javascript" src="{{ asset('js/datatables.min.js') }}?v={{ versioning }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/jquery.colorbox.js') }}?v={{ versioning }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.multiselect.js') }}?v={{ versioning }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/on-off-switch.js') }}?v={{ versioning }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/plugins/piexif.min.js') }}?v={{ versioning }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/sortable.min.js') }}?v={{ versioning }}"></script>
+    <script type="text/javascript" src="{{ asset('js/plugins/purify.min.js') }}?v={{ versioning }}"></script>
+    <script type="text/javascript" src="{{ asset('js/fileinput.js') }}?v={{ versioning }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/jquery.are-you-sure.js') }}?v={{ versioning }}"></script>
+    <script type="text/javascript" src="{{ asset('js/ays-beforeunload-shim.js') }}?v={{ versioning }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/croppie.js') }}?v={{ versioning }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/hashtable.js') }}?v={{ versioning }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.numberformatter.js') }}?v={{ versioning }}"></script>
+
+    <script type="text/javascript" src="{{ asset('js/jquery-confirm.js') }}?v={{ versioning }}"></script>
+{% endblock %} 
+
+{% block init %}
+    <script type="text/javascript">app_permissions.route_permission.profile.init();</script>
+{% endblock %}

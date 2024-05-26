@@ -1,0 +1,86 @@
+{% extends "layouts/simple" %}
+
+{% block meta %}
+    <meta name="loginpage" content="loginpage">
+{% endblock %}
+
+{% block content %}
+    <div class="middle-box text-center loginscreen animated fadeInDown p-xxlg-top unselectable">
+        <div>
+            <img src="{{ asset('logo.png') }}" alt="Br24 logo">
+        </div>
+
+        <h3 style="white-space: nowrap; {% if locale == 'en' %}margin-left: -5px;{% elseif locale == 'de' %}margin-left: -5px;{% elseif locale == 'vi' %}margin-left: -52px;{% endif %}">{{ trans('message.auth.login.welcome_to_download_upload_tool') }}</h3>
+
+        {% if (result == 'Chrome') or (result == 'Firefox') %}
+        {# {% if (result == 'Chrome') %} #}
+            <form class="m-t" role="form" action="{{ route('login') }}" method="POST" novalidate>
+                {{ csrf_field() }}
+
+                {% if session_has('errors') %}
+                    {% set errors = app.session.get('errors') %}
+                    {% set ldap_mismatch = ' has-error' %}
+                {% endif %}
+
+                <div class="form-group {{ errors.has('username') ? ' has-error' : '' }} {{ ldap_mismatch }}">{% set username_value = old('username') ? old('username') : '' %}
+                    <input type="text" name="username" class="form-control" placeholder="{{ trans('message.auth.login.username_placeholder') }}" required autofocus autocomplete="username" value="{{ username_value }}">
+
+                    {% if errors.has('username') %}
+                        <span class="help-block m-b-none text-left">
+                            {{ errors.first('username') }}
+                        </span>
+                    {% endif %}
+
+                    {% if session_has('errors') %}
+                        {% set errors = app.session.get('errors') %}
+                        {% if errors["ldap_mismatch"] is defined %}
+                            <span class="help-block m-b-none text-left">
+                                {{ errors.ldap_mismatch }}
+                            </span>
+                        {% endif %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group {{ errors.has('password') ? ' has-error' : '' }}">
+                    <input type="password" name="password" class="form-control" placeholder="{{ trans('message.auth.login.password_placeholder') }}" required autocomplete="current-password">
+
+                    {% if errors.has('password') %}
+                        <span class="help-block m-b-none text-left">
+                            {{ errors.first('password') }}
+                        </span>
+                    {% endif %}
+                </div>
+
+                <input type="submit" class="btn btn-primary block full-width m-b" onmousedown="this.disabled=true;this.value='{{ trans('message.auth.login.login_processing') }}'; this.form.submit();" value="{{ trans('message.auth.login.login_placeholder') }}">
+
+                {#<a href="{{ route('password.request') }}"><small>Forgot password?</small></a>#}
+                {#<p class="text-muted text-center"><small>Do not have an account?</small></p>#}
+                {#<a class="btn btn-sm btn-white btn-block" href="{{ route('register') }}">Create an account</a>#}
+            </form>
+        {% else %}
+            <br>
+            <br>
+            <div>
+                <i class="fa fa-exclamation-triangle text-warning-orange"></i> {{ trans('message.auth.login.browser_not_supported') }}
+            </div>
+            <br>
+            <br>
+        {% endif %}
+
+        <p class="m-t"> <small>{{ trans('message.partials.footer.copyright', { 'now' : "now"|date("Y") }) }}</small> </p>
+
+        {% if (config('test.APP_ENV') == 'dev') or (config('test.APP_ENV') == 'test') %}
+            <div style="padding-top: 100px">
+                <h5 style="color:red;">
+                    <p>Connection2 = {{ config('test.DB_CONNECTION2') }}</p>
+                    <p>Host2 = {{ config('test.DB_HOST2') }}</p>
+                    <p>database2 = {{ config('test.DB_DATABASE2') }}</p>
+                    <hr>
+                    <p>Connection = {{ config('test.DB_CONNECTION') }}</p>
+                    <p>Host = {{ config('test.DB_HOST') }}</p>
+                    <p>database = {{ config('test.DB_DATABASE') }}</p>
+                </h5>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
